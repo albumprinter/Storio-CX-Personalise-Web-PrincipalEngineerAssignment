@@ -60,6 +60,9 @@ export interface PanZoomPhotoAction {
 export interface SetPhotoAction {
   type: typeof SET_PHOTO;
   payload: Photo;
+  meta?: {
+    recordInHistory: boolean;
+  };
   [key: string]: any;
 }
 

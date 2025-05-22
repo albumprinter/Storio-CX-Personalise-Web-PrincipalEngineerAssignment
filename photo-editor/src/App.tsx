@@ -4,11 +4,14 @@ import './App.css';
 import PhotoUploader from './components/PhotoUploader';
 import PhotoControls from './components/PhotoControls';
 import ImageRenderer from './components/ImageRenderer';
+import UndoRedoControls from './components/UndoRedoControls';
 import { loadSavedPhoto } from './store/photo/actions';
 import { AppDispatch } from './store';
+import { useUndoRedoKeyboardShortcuts } from './hooks/useUndoRedoKeyboardShortcuts';
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
+  useUndoRedoKeyboardShortcuts();
 
   useEffect(() => {
     // When the app loads, try to load any saved photo state
@@ -21,6 +24,7 @@ function App() {
         <h1>Photo Editor</h1>
         <p>Upload a photo to get started</p>
         <PhotoUploader />
+        <UndoRedoControls />
         <ImageRenderer />
         <PhotoControls />
       </header>

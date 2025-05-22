@@ -41,9 +41,12 @@ export const panZoomPhoto = (width: number, height: number): PanZoomPhotoAction 
   }
 });
 
-export const setPhoto = (photo: Photo): SetPhotoAction => ({
+export const setPhoto = (photo: Photo, recordInHistory: boolean = true): SetPhotoAction => ({
   type: SET_PHOTO,
-  payload: photo
+  payload: photo,
+  meta: {
+    recordInHistory
+  }
 });
 
 export const addFilter = (filter: PhotoFilter): AddFilterAction => ({

@@ -11,6 +11,7 @@ import {
 } from './types';
 import { selectPhoto } from './selectors';
 import { loadSavedPhotoSuccess } from './actions';
+import { clearHistory } from '../history/actions';
 
 const STORAGE_KEY = 'photo_editor_state';
 const IMAGE_STORAGE_KEY = 'photo_editor_image';
@@ -39,8 +40,16 @@ const willFitInLocalStorage = (str: string): boolean => {
   return estimatedSize < MAX_LOCAL_STORAGE_SIZE;
 };
 
-function* savePhotoState() {
+function* savePhotoState(action: any) {
   try {
+    console.log('Saving photo state to localStorage', action);
+    console.log(action.type === SET_PHOTO && (!action.meta || !action.meta.recordInHistory));
+    // If setting a new photo, clear the history
+    if (action.type === SET_PHOTO && (!action.meta || action.meta.recordInHistory)) {
+      console.log('Clearing history due to new photo');
+      yield put(clearHistory());
+    }
+    
     const photo: Photo | null = yield select(selectPhoto);
     
     if (photo) {

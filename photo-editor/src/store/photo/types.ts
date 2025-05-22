@@ -1,5 +1,11 @@
 // Photo model types
 
+// Photo filter enum
+export enum PhotoFilter {
+  SEPIA = 'sepia',
+  BLACK_AND_WHITE = 'black_and_white'
+}
+
 // Photo model interface
 export interface Photo {
   dimensions: {
@@ -8,6 +14,7 @@ export interface Photo {
   };
   source: string; // Relative path to the image
   rotation: number;
+  filters: PhotoFilter[]; // Array of filters to apply to the photo
 }
 
 // Initial state interface
@@ -20,10 +27,13 @@ export const RESET_ROTATION = 'photo/RESET_ROTATION';
 export const ROTATE_PHOTO = 'photo/ROTATE_PHOTO';
 export const PAN_ZOOM_PHOTO = 'photo/PAN_ZOOM_PHOTO';
 export const SET_PHOTO = 'photo/SET_PHOTO';
+export const ADD_FILTER = 'photo/ADD_FILTER';
+export const REMOVE_FILTER = 'photo/REMOVE_FILTER';
 
 // Action interfaces
 export interface ResetRotationAction {
   type: typeof RESET_ROTATION;
+  [key: string]: any;
 }
 
 export interface RotatePhotoAction {
@@ -31,6 +41,7 @@ export interface RotatePhotoAction {
   payload: {
     rotation: number;
   };
+  [key: string]: any;
 }
 
 export interface PanZoomPhotoAction {
@@ -41,11 +52,29 @@ export interface PanZoomPhotoAction {
       height: number;
     };
   };
+  [key: string]: any;
 }
 
 export interface SetPhotoAction {
   type: typeof SET_PHOTO;
   payload: Photo;
+  [key: string]: any;
+}
+
+export interface AddFilterAction {
+  type: typeof ADD_FILTER;
+  payload: {
+    filter: PhotoFilter;
+  };
+  [key: string]: any;
+}
+
+export interface RemoveFilterAction {
+  type: typeof REMOVE_FILTER;
+  payload: {
+    filter: PhotoFilter;
+  };
+  [key: string]: any;
 }
 
 // Union of all photo action types
@@ -53,4 +82,6 @@ export type PhotoActionTypes =
   | ResetRotationAction 
   | RotatePhotoAction 
   | PanZoomPhotoAction
-  | SetPhotoAction;
+  | SetPhotoAction
+  | AddFilterAction
+  | RemoveFilterAction;

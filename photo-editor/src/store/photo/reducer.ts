@@ -4,7 +4,9 @@ import {
   RESET_ROTATION,
   ROTATE_PHOTO,
   PAN_ZOOM_PHOTO,
-  SET_PHOTO
+  SET_PHOTO,
+  ADD_FILTER,
+  REMOVE_FILTER
 } from './types';
 
 // Initial state
@@ -51,6 +53,29 @@ const photoReducer = (
         photo: {
           ...state.photo,
           dimensions: action.payload.dimensions
+        }
+      };
+      
+    case ADD_FILTER:
+      if (!state.photo) return state;
+      if (state.photo.filters.includes(action.payload.filter)) {
+        return state;
+      }
+      return {
+        ...state,
+        photo: {
+          ...state.photo,
+          filters: [...state.photo.filters, action.payload.filter]
+        }
+      };
+      
+    case REMOVE_FILTER:
+      if (!state.photo) return state;
+      return {
+        ...state,
+        photo: {
+          ...state.photo,
+          filters: state.photo.filters.filter(filter => filter !== action.payload.filter)
         }
       };
       

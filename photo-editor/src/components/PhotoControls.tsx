@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { resetRotation, rotatePhoto, panZoomPhoto } from '../store/photo/actions';
 import { selectPhoto } from '../store/photo/selectors';
 import { AppDispatch } from '../store';
+import FilterControls from './FilterControls';
 import './PhotoControls.css';
 
 const PhotoControls: React.FC = () => {
@@ -93,6 +94,8 @@ const PhotoControls: React.FC = () => {
           <p>Dimensions: {Math.round(photo.dimensions.width)} x {Math.round(photo.dimensions.height)}</p>
         </div>
       )}
+      
+      <FilterControls />
     </div>
   );
 };

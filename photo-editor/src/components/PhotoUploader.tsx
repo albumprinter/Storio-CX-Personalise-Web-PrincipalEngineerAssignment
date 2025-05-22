@@ -30,7 +30,8 @@ const PhotoUploader: React.FC = () => {
             height: img.height
           },
           source: fileUrl,
-          rotation: 0
+          rotation: 0,
+          filters: []
         };
         
         dispatch(setPhoto(photo));

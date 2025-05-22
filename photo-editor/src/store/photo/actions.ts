@@ -3,11 +3,16 @@ import {
   ROTATE_PHOTO, 
   PAN_ZOOM_PHOTO, 
   SET_PHOTO,
+  ADD_FILTER,
+  REMOVE_FILTER,
   Photo,
+  PhotoFilter,
   ResetRotationAction,
   RotatePhotoAction,
   PanZoomPhotoAction,
-  SetPhotoAction
+  SetPhotoAction,
+  AddFilterAction,
+  RemoveFilterAction
 } from './types';
 
 // Action creators
@@ -35,4 +40,18 @@ export const panZoomPhoto = (width: number, height: number): PanZoomPhotoAction 
 export const setPhoto = (photo: Photo): SetPhotoAction => ({
   type: SET_PHOTO,
   payload: photo
+});
+
+export const addFilter = (filter: PhotoFilter): AddFilterAction => ({
+  type: ADD_FILTER,
+  payload: {
+    filter
+  }
+});
+
+export const removeFilter = (filter: PhotoFilter): RemoveFilterAction => ({
+  type: REMOVE_FILTER,
+  payload: {
+    filter
+  }
 });

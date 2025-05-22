@@ -5,6 +5,8 @@ import {
   SET_PHOTO,
   ADD_FILTER,
   REMOVE_FILTER,
+  LOAD_SAVED_PHOTO,
+  LOAD_SAVED_PHOTO_SUCCESS,
   Photo,
   PhotoFilter,
   ResetRotationAction,
@@ -12,7 +14,9 @@ import {
   PanZoomPhotoAction,
   SetPhotoAction,
   AddFilterAction,
-  RemoveFilterAction
+  RemoveFilterAction,
+  LoadSavedPhotoAction,
+  LoadSavedPhotoSuccessAction
 } from './types';
 
 // Action creators
@@ -54,4 +58,13 @@ export const removeFilter = (filter: PhotoFilter): RemoveFilterAction => ({
   payload: {
     filter
   }
+});
+
+export const loadSavedPhoto = (): LoadSavedPhotoAction => ({
+  type: LOAD_SAVED_PHOTO
+});
+
+export const loadSavedPhotoSuccess = (photo: Photo): LoadSavedPhotoSuccessAction => ({
+  type: LOAD_SAVED_PHOTO_SUCCESS,
+  payload: photo
 });

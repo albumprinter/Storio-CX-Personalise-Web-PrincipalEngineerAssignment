@@ -6,7 +6,8 @@ import {
   PAN_ZOOM_PHOTO,
   SET_PHOTO,
   ADD_FILTER,
-  REMOVE_FILTER
+  REMOVE_FILTER,
+  LOAD_SAVED_PHOTO_SUCCESS
 } from './types';
 
 // Initial state
@@ -77,6 +78,12 @@ const photoReducer = (
           ...state.photo,
           filters: state.photo.filters.filter(filter => filter !== action.payload.filter)
         }
+      };
+      
+    case LOAD_SAVED_PHOTO_SUCCESS:
+      return {
+        ...state,
+        photo: action.payload
       };
       
     default:

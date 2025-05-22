@@ -20,23 +20,28 @@ const PhotoUploader: React.FC = () => {
     if (file) {
       console.log('File selected:', file.name);
       
-      const fileUrl = URL.createObjectURL(file);
-      
-      const img = new Image();
-      img.onload = () => {
-        const photo: Photo = {
-          dimensions: {
-            width: img.width,
-            height: img.height
-          },
-          source: fileUrl,
-          rotation: 0,
-          filters: []
-        };
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const base64String = e.target?.result as string;
         
-        dispatch(setPhoto(photo));
+        const img = new Image();
+        img.onload = () => {
+          const photo: Photo = {
+            dimensions: {
+              width: img.width,
+              height: img.height
+            },
+            source: base64String,
+            rotation: 0,
+            filters: []
+          };
+          
+          dispatch(setPhoto(photo));
+        };
+        img.src = base64String;
       };
-      img.src = fileUrl;
+      
+      reader.readAsDataURL(file);
     }
   };
 

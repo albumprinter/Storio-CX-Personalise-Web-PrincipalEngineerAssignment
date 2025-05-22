@@ -29,6 +29,8 @@ export const PAN_ZOOM_PHOTO = 'photo/PAN_ZOOM_PHOTO';
 export const SET_PHOTO = 'photo/SET_PHOTO';
 export const ADD_FILTER = 'photo/ADD_FILTER';
 export const REMOVE_FILTER = 'photo/REMOVE_FILTER';
+export const LOAD_SAVED_PHOTO = 'photo/LOAD_SAVED_PHOTO';
+export const LOAD_SAVED_PHOTO_SUCCESS = 'photo/LOAD_SAVED_PHOTO_SUCCESS';
 
 // Action interfaces
 export interface ResetRotationAction {
@@ -77,6 +79,17 @@ export interface RemoveFilterAction {
   [key: string]: any;
 }
 
+export interface LoadSavedPhotoAction {
+  type: typeof LOAD_SAVED_PHOTO;
+  [key: string]: any;
+}
+
+export interface LoadSavedPhotoSuccessAction {
+  type: typeof LOAD_SAVED_PHOTO_SUCCESS;
+  payload: Photo;
+  [key: string]: any;
+}
+
 // Union of all photo action types
 export type PhotoActionTypes = 
   | ResetRotationAction 
@@ -84,4 +97,6 @@ export type PhotoActionTypes =
   | PanZoomPhotoAction
   | SetPhotoAction
   | AddFilterAction
-  | RemoveFilterAction;
+  | RemoveFilterAction
+  | LoadSavedPhotoAction
+  | LoadSavedPhotoSuccessAction;

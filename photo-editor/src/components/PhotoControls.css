@@ -1,0 +1,108 @@
+/* PhotoControls.css */
+.photo-controls {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f0f0f0; /* Slightly lighter for better contrast */
+  border: 2px solid #0056b3; /* Adding border for better definition */
+  border-radius: 8px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.photo-controls h3 {
+  font-size: 1.5rem;
+  color: #003366; /* Dark blue for high contrast */
+  margin-top: 0;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: 700; /* Bold weight for better visibility */
+  padding-bottom: 10px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8); /* Subtle text shadow for legibility */
+  letter-spacing: 0.5px; /* Slightly more spacing between letters */
+}
+
+.controls-header {
+  padding: 8px 12px;
+  display: inline-block;
+  width: auto;
+  margin: 0 auto 15px;
+}
+
+.control-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.control-buttons button {
+  padding: 10px 14px; /* Slightly larger padding for better target size */
+  border: none;
+  border-radius: 4px;
+  background-color: #005a9c; /* More accessible blue */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 500; /* Slightly bolder text for better readability */
+  font-size: 16px; /* Ensuring readable text size */
+}
+
+.control-buttons button:hover:not(:disabled) {
+  background-color: #003d69; /* Darker on hover for visual feedback */
+  box-shadow: 0 0 0 2px #8ab4f8; /* Focus-like outline for hover state */
+}
+
+.control-buttons button:focus {
+  outline: 3px solid #8ab4f8; /* Visible focus outline */
+  outline-offset: 2px;
+}
+
+.control-buttons button:disabled {
+  background-color: #6c757d; /* Darker gray for better contrast */
+  color: #f5f5f5; /* Light color text on disabled button */
+  cursor: not-allowed;
+}
+
+.photo-info {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #e8e8e8;
+  border-radius: 4px;
+  border: 1px solid #0056b3; /* Adding border for better definition */
+}
+
+.photo-info p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #333333; /* Darker text for better readability */
+  font-weight: 500; /* Slightly bolder for better readability */
+}
+
+/* Support for dark mode */
+@media (prefers-color-scheme: dark) {
+  .photo-controls {
+    background-color: #333333;
+    border-color: #5b8cbe;
+  }
+  
+  .photo-controls h3 {
+    color: #ffffff;
+    border-bottom-color: #5b8cbe;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+  }
+  
+  .controls-header {
+    background-color: #19376d;
+    color: #ffffff;
+  }
+  
+  .photo-info {
+    background-color: #404040;
+    border-color: #5b8cbe;
+  }
+  
+  .photo-info p {
+    color: #ffffff;
+  }
+}

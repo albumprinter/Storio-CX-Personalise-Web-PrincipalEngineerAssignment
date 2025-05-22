@@ -1,0 +1,31 @@
+/* ImageRenderer.css */
+.image-renderer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.image-canvas {
+  width: 500px;
+  height: 500px;
+  border: 3px solid #0056b3; /* Darker blue for better border visibility */
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff; /* Pure white background for better contrast */
+}
+
+.no-image {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff; /* White background */
+  border: 3px dashed #555555; /* Darker border for better visibility */
+  border-radius: 4px;
+  color: #333333; /* Darker text for better readability */
+  font-size: 18px;
+  font-weight: 500; /* Slightly bolder for better readability */
+}

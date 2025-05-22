@@ -1,0 +1,38 @@
+.photo-uploader {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.upload-button {
+  background-color: #0d8a2e; /* Darker green for better contrast */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600; /* Bolder text for better readability */
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Adding shadow for depth */
+}
+
+.upload-button:hover {
+  background-color: #096922; /* Darker on hover for better visual feedback */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.upload-button:focus {
+  outline: 3px solid #8ab4f8; /* Visible focus outline */
+  outline-offset: 2px;
+  background-color: #096922;
+}
+
+.upload-button:active {
+  background-color: #064e19; /* Darker when active for visual feedback */
+  transform: translateY(1px); /* Slight movement for tactile feedback */
+}

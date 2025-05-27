@@ -38,7 +38,6 @@ This application makes use of TypeScript, ReactJS, Redux and Redux Saga.
 
 2. Install dependencies:
    ```
-   cd photo-editor
    yarn install
    ```
 

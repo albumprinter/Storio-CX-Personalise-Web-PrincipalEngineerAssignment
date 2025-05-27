@@ -51,9 +51,7 @@ export const setPhoto = (photo: Photo, recordInHistory: boolean = true): SetPhot
 
 export const addFilter = (filter: PhotoFilter): AddFilterAction => ({
   type: ADD_FILTER,
-  payload: {
-    filter
-  }
+  filter
 });
 
 export const removeFilter = (filter: PhotoFilter): RemoveFilterAction => ({

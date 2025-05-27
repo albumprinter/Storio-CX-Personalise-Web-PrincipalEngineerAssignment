@@ -65,7 +65,7 @@ function* watchHistoryActions() {
 }
 
 function* watchPhotoActionsForHistory() {
-  yield takeEvery(
+  yield takeLatest(
     [
       SET_PHOTO,
       RESET_ROTATION,

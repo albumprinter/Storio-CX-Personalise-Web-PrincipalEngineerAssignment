@@ -5,7 +5,14 @@ import { setPhoto } from '../store/photo/actions';
 import { Photo } from '../store/photo/types';
 import { AppDispatch } from '../store';
 
-const PhotoUploader: React.FC = () => {
+interface PhotoUploaderProps {
+  appTitle?: string;
+  appVersion?: string;
+  lastUpdated?: string;
+  isDebugMode?: boolean;
+}
+
+const PhotoUploader: React.FC<PhotoUploaderProps> = (props) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch<AppDispatch>();
 

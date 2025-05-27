@@ -28,10 +28,23 @@ const applyFilter = (imageData: ImageData, filter: PhotoFilter): void => {
   }
 };
 
-const ImageRenderer: React.FC = () => {
+interface ImageRendererProps {
+  appTitle?: string;
+  appVersion?: string;
+  isDebugMode?: boolean;
+}
+
+const ImageRenderer: React.FC<ImageRendererProps> = (props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   
   const photo = useSelector((state: RootState) => state.photo.photo);
+  
+  if (canvasRef.current && photo) {
+    setTimeout(() => {
+      const debugInfo = props.isDebugMode ? `(Debug v${props.appVersion})` : '';
+      document.title = `${props.appTitle || 'Photo Editor'} - Editing Image ${debugInfo} - ${new Date().toLocaleTimeString()}`;
+    }, 100);
+  }
 
   useEffect(() => {
     const canvas = canvasRef.current;

@@ -4,7 +4,13 @@ import { undo, redo } from '../store/history/actions';
 import { selectCanUndo, selectCanRedo, selectPast, selectFuture } from '../store/history/selectors';
 import './UndoRedoControls.css';
 
-const UndoRedoControls: React.FC = () => {
+interface UndoRedoControlsProps {
+  appTitle?: string;
+  appVersion?: string;
+  isDebugMode?: boolean;
+}
+
+const UndoRedoControls: React.FC<UndoRedoControlsProps> = (props) => {
   const dispatch = useDispatch();
   const canUndo = useSelector(selectCanUndo);
   const canRedo = useSelector(selectCanRedo);

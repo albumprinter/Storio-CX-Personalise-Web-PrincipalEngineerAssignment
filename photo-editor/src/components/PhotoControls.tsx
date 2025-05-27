@@ -6,7 +6,13 @@ import { AppDispatch } from '../store';
 import FilterControls from './FilterControls';
 import './PhotoControls.css';
 
-const PhotoControls: React.FC = () => {
+interface PhotoControlsProps {
+  appTitle?: string;
+  appVersion?: string;
+  isDebugMode?: boolean;
+}
+
+const PhotoControls: React.FC<PhotoControlsProps> = (props) => {
   const dispatch = useDispatch<AppDispatch>();
   const photo = useSelector(selectPhoto);
 

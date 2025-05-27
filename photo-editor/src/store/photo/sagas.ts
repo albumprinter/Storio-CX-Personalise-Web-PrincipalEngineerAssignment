@@ -42,8 +42,6 @@ const willFitInLocalStorage = (str: string): boolean => {
 
 function* savePhotoState(action: any) {
   try {
-    console.log('Saving photo state to localStorage', action);
-    console.log(action.type === SET_PHOTO && (!action.meta || !action.meta.recordInHistory));
     // If setting a new photo, clear the history
     if (action.type === SET_PHOTO && (!action.meta || action.meta.recordInHistory)) {
       console.log('Clearing history due to new photo');
@@ -106,6 +104,7 @@ function* loadSavedPhotoState() {
         } catch (imgError) {
           console.error('Error loading saved image:', imgError);
           alert('Found saved photo settings, but the image could not be loaded. Please upload a new image.');
+          throw new Error('Failed to load image from storage');
         }
       } else {
         alert('Found saved photo settings! Please upload an image to apply them.');
@@ -116,6 +115,7 @@ function* loadSavedPhotoState() {
     }
   } catch (error) {
     console.error('Error loading photo state from localStorage:', error);
+    alert('An error occurred while loading your saved photo');
   }
 }
 

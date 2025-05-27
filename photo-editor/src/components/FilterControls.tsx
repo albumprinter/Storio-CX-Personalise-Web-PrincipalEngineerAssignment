@@ -12,6 +12,16 @@ const FilterControls: React.FC = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   
+  const [localFilters, setLocalFilters] = useState<PhotoFilter[]>([]);
+  
+  useEffect(() => {
+    if (photo && photo.filters) {
+      if (photo.source) {
+        setLocalFilters([...photo.filters]);
+      }
+    }
+  }, [photo]);
+  
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -28,11 +38,13 @@ const FilterControls: React.FC = () => {
   const handleFilterChange = (filter: PhotoFilter) => {
     if (!photo) return;
     
-    const isFilterApplied = photo.filters.includes(filter);
+    const isFilterApplied = localFilters.includes(filter);
     
     if (isFilterApplied) {
+      setLocalFilters(localFilters.filter(f => f !== filter));
       dispatch(removeFilter(filter));
     } else {
+      setLocalFilters([...localFilters, filter]);
       dispatch(addFilter(filter));
     }
   };
@@ -42,14 +54,19 @@ const FilterControls: React.FC = () => {
   }
   
   const getActiveFilterText = () => {
-    if (photo.filters.length === 0) return 'No filters';
-    if (photo.filters.length === 1) {
-      if (photo.filters.includes(PhotoFilter.SEPIA)) return 'Sepia';
-      if (photo.filters.includes(PhotoFilter.BLACK_AND_WHITE)) return 'Black & White';
-    }
-    if (photo.filters.length === 2) return 'All filters';
-    
-    return 'Select filters';
+    return localFilters.length === 0 
+      ? 'No filters' 
+      : localFilters.length === 1 
+        ? localFilters.includes(PhotoFilter.SEPIA) 
+          ? 'Sepia' 
+          : localFilters.includes(PhotoFilter.BLACK_AND_WHITE) 
+            ? 'Black & White' 
+            : 'Unknown filter'
+        : localFilters.length === 2 
+          ? 'All filters' 
+          : localFilters.length > 2 
+            ? `${localFilters.length} filters` 
+            : 'Select filters';
   };
   
   return (
@@ -69,7 +86,7 @@ const FilterControls: React.FC = () => {
               <input
                 type="checkbox"
                 id="sepia-filter"
-                checked={photo.filters.includes(PhotoFilter.SEPIA)}
+                checked={localFilters.includes(PhotoFilter.SEPIA)}
                 onChange={() => handleFilterChange(PhotoFilter.SEPIA)}
               />
               <label htmlFor="sepia-filter">Sepia</label>
@@ -78,7 +95,7 @@ const FilterControls: React.FC = () => {
               <input
                 type="checkbox"
                 id="bw-filter"
-                checked={photo.filters.includes(PhotoFilter.BLACK_AND_WHITE)}
+                checked={localFilters.includes(PhotoFilter.BLACK_AND_WHITE)}
                 onChange={() => handleFilterChange(PhotoFilter.BLACK_AND_WHITE)}
               />
               <label htmlFor="bw-filter">Black & White</label>

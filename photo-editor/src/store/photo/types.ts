@@ -68,9 +68,7 @@ export interface SetPhotoAction {
 
 export interface AddFilterAction {
   type: typeof ADD_FILTER;
-  payload: {
-    filter: PhotoFilter;
-  };
+  filter: PhotoFilter;
   [key: string]: any;
 }
 

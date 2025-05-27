@@ -59,14 +59,15 @@ const photoReducer = (
       
     case ADD_FILTER:
       if (!state.photo) return state;
-      if (state.photo.filters.includes(action.payload.filter)) {
+      
+      if (state.photo.filters.includes(action.filter)) {
         return state;
       }
       return {
         ...state,
         photo: {
           ...state.photo,
-          filters: [...state.photo.filters, action.payload.filter]
+          filters: [...state.photo.filters, action.filter]
         }
       };
       

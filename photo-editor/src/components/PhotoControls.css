@@ -29,6 +29,22 @@
   margin: 0 auto 15px;
 }
 
+.control-section {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+}
+
+.section-title {
+  font-size: 1.1rem;
+  color: #003366;
+  margin-top: 0;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: 600;
+}
+
 .control-buttons {
   display: flex;
   justify-content: center;
@@ -92,6 +108,14 @@
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
   }
   
+  .control-section {
+    background-color: rgba(50, 50, 50, 0.5);
+  }
+  
+  .section-title {
+    color: #ffffff;
+  }
+  
   .controls-header {
     background-color: #19376d;
     color: #ffffff;
@@ -103,6 +127,6 @@
   }
   
   .photo-info p {
-    color: #ffffff;
+    color: #e0e0e0;
   }
 }

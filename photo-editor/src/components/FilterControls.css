@@ -1,34 +1,93 @@
 .filter-controls {
-  margin-top: 1rem;
-  padding: 1rem;
-  background-color: #f5f5f5;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.filter-controls h3 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-  color: #333;
-}
-
-.filter-options {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.filter-dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.filter-button {
+  padding: 10px 14px;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  background-color: #005a9c;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter-button:hover {
+  background-color: #003d69;
+  box-shadow: 0 0 0 2px #8ab4f8;
+}
+
+.filter-button:focus {
+  outline: 3px solid #8ab4f8;
+  outline-offset: 2px;
+}
+
+.dropdown-content {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 100%;
+  margin-top: 5px;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  z-index: 1000;
 }
 
 .filter-option {
   display: flex;
   align-items: center;
+  padding: 8px 5px;
+  transition: background-color 0.2s;
+  border-radius: 3px;
+}
+
+.filter-option:hover {
+  background-color: #e8e8e8;
 }
 
 .filter-option input[type="checkbox"] {
-  margin-right: 0.5rem;
+  margin-right: 10px;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
 }
 
 .filter-option label {
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 16px;
+  color: #333333;
+  font-weight: 500;
+}
+
+/* Support for dark mode */
+@media (prefers-color-scheme: dark) {
+  .dropdown-content {
+    background-color: #2a2a2a;
+    border: 1px solid #555;
+  }
+  
+  .filter-option:hover {
+    background-color: #3a3a3a;
+  }
+  
+  .filter-option label {
+    color: #e0e0e0;
+  }
 }

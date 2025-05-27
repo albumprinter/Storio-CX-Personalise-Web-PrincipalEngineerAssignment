@@ -49,53 +49,64 @@ const PhotoControls: React.FC = () => {
   return (
     <div className="photo-controls">
       <h3 className="controls-header">Photo Controls</h3>
-      <div className="control-buttons">
-        <button 
-          onClick={handleRotateLeft} 
-          disabled={isDisabled}
-          title="Rotate Left"
-        >
-          ↶ Rotate Left
-        </button>
-        <button 
-          onClick={handleResetRotation} 
-          disabled={isDisabled}
-          title="Reset Rotation"
-        >
-          ⟳ Reset
-        </button>
-        <button 
-          onClick={handleRotateRight} 
-          disabled={isDisabled}
-          title="Rotate Right"
-        >
-          ↷ Rotate Right
-        </button>
+      <div className="control-section">
+        <h4 className="section-title">Rotation</h4>
+        <div className="control-buttons">
+          <button 
+            onClick={handleRotateLeft} 
+            disabled={isDisabled}
+            title="Rotate Left"
+          >
+            ↶ Rotate Left
+          </button>
+          <button 
+            onClick={handleResetRotation} 
+            disabled={isDisabled}
+            title="Reset Rotation"
+          >
+            ⟳ Reset
+          </button>
+          <button 
+            onClick={handleRotateRight} 
+            disabled={isDisabled}
+            title="Rotate Right"
+          >
+            ↷ Rotate Right
+          </button>
+        </div>
       </div>
-      <div className="control-buttons">
-        <button 
-          onClick={handleZoomIn} 
-          disabled={isDisabled}
-          title="Zoom In"
-        >
-          🔍+ Zoom In
-        </button>
-        <button 
-          onClick={handleZoomOut} 
-          disabled={isDisabled}
-          title="Zoom Out"
-        >
-          🔍- Zoom Out
-        </button>
+      
+      <div className="control-section">
+        <h4 className="section-title">Size</h4>
+        <div className="control-buttons">
+          <button 
+            onClick={handleZoomIn} 
+            disabled={isDisabled}
+            title="Zoom In"
+          >
+            🔍+ Zoom In
+          </button>
+          <button 
+            onClick={handleZoomOut} 
+            disabled={isDisabled}
+            title="Zoom Out"
+          >
+            🔍- Zoom Out
+          </button>
+        </div>
       </div>
+      
+      <div className="control-section">
+        <h4 className="section-title">Effects</h4>
+        <FilterControls />
+      </div>
+      
       {photo && (
         <div className="photo-info">
           <p>Current Rotation: {(photo.rotation * 180 / Math.PI).toFixed(2)}°</p>
           <p>Dimensions: {Math.round(photo.dimensions.width)} x {Math.round(photo.dimensions.height)}</p>
         </div>
       )}
-      
-      <FilterControls />
     </div>
   );
 };
